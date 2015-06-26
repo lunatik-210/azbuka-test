@@ -6,8 +6,8 @@
                   md-rowspan="1"
                   md-colspan="1"
                   md-colspan-sm="1" 
-                  class="catalog-card">
-        <img ui-sref="book({book_id:book.id})" class="cover" alt="image caption" ng-src="https://storage.aggregion.com/api/files/{{book.cover}}/shared/data">
+                  class="b-catalog-card">
+        <img ui-sref="book({book_id:book.id})" alt="Cover" ng-src="{{Storage.getFileUrl(book.cover)}}">
         <md-grid-tile-footer><h3>{{book.title.default}}</h3></md-grid-tile-footer></a>
     </md-grid-tile>
 </md-grid-list>

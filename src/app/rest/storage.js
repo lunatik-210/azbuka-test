@@ -1,10 +1,17 @@
 (function() {
     'use strict';
 
-    function Storage($resource, storageAPI)
+    function Storage(storageAPI)
     {
-        return $resource(storageAPI+'/files/:resourceId/shared/data');
+        var storage = {};
+
+        storage.getFileUrl = function(id)
+        {
+            return storageAPI + '/files/' + id + '/shared/data';
+        };
+
+        return storage;
     }
 
-    angular.module('azbuka').factory('Storage', ['$resource', 'storageAPI', Storage]);
+    angular.module('azbuka').factory('Storage', ['storageAPI', Storage]);
 })();

@@ -1,1 +1,15 @@
-{{book}}
+<div>
+    <h1>{{book.title.default}}</h1>
+    <div class="b-book-content">
+        <img class="b-book-cover" alt="Cover" ng-src="{{Storage.getFileUrl(book.cover)}}">
+        <span>{{book.description.default}}</span>       
+    </div>
+    <div class="b-book-footer">
+        <span>{{book.options.authors}}</span>
+        <b>, {{book.options.ISBN}}</b>
+        <span>, {{book.options.Publisher}}</span>
+        <div ng-repeat="bundle in bundles">
+            <a ng-href="{{Storage.getFileUrl(bundle.resourceId)}}">Link{{$index+1}}</a>
+        </div>
+    </div>
+</div>

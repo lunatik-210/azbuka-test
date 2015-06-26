@@ -32,6 +32,14 @@
                 {
                     return Catalog.get({id: $stateParams.book_id});
                 }
+            ],
+            bundles: [
+                'BookBundles',
+                '$stateParams',
+                function(BookBundles, $stateParams)
+                {
+                    return BookBundles.query({book_id: $stateParams.book_id});
+                }
             ]
         }
     };

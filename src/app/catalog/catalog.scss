@@ -1,25 +1,23 @@
-$cover-scale-factor: 1.05;
-
-.catalog-card {
+.b-catalog-card {
     
 }
 
-.catalog-card:hover {
+.b-catalog-card:hover {
 
 }
 
-.catalog-card img {
+.b-catalog-card img {
     width: auto;
     height: 100%;
     z-index: 0; 
 }
 
-.catalog-card img:hover {
+.b-catalog-card img:hover {
     opacity: 0.9;
     cursor: pointer;
 }
 
-.catalog-card md-grid-tile-footer {
+.b-catalog-card md-grid-tile-footer {
     background-color: RGB(0, 0, 0);
     opacity: 0.8;
     height: 20%;    
