@@ -44,16 +44,40 @@
         }
     };
 
-    function azbukaConfig($stateProvider, $urlRouterProvider) 
+    var errorState = 
     {
+        templateUrl: 'app/error/error.html',
+        controller: 'ErrorCtrl'
+    };
+
+    function azbukaConfig($stateProvider, $urlRouterProvider, $locationProvider) 
+    {
+        $locationProvider.html5Mode(true);
+
         $stateProvider.state('catalog', catalogState);
         $stateProvider.state('book', bookState);
+        $stateProvider.state('error', errorState);
 
-        $urlRouterProvider.otherwise('/catalog');
+        $urlRouterProvider.when('/', '/catalog');
+
+        $urlRouterProvider.otherwise(function ($injector, $location) {
+            $injector.invoke(['$state', function ($state) { $state.go('error'); }]);
+            return true;
+        });
     }
 
-    azbukaModule.config(['$stateProvider', '$urlRouterProvider', azbukaConfig]);
+    function azbukaRun($rootScope, $state)
+    {
+        $rootScope.$on('$stateChangeError', function() 
+        {
+            $state.go('error');
+        });       
+    }
+
+    azbukaModule.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', azbukaConfig]);
+    azbukaModule.run(['$rootScope', '$state', azbukaRun]);
 
     azbukaModule.constant('dsAPI',      'https://ds.aggregion.com/api');
     azbukaModule.constant('storageAPI', 'https://storage.aggregion.com/api');
+
 }());

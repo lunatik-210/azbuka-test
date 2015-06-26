@@ -2,12 +2,12 @@
     <h1>{{book.title.default}}</h1>
     <div class="b-book-content">
         <img class="b-book-cover" alt="Cover" ng-src="{{Storage.getFileUrl(book.cover)}}">
-        <span>{{book.description.default}}</span>       
+        <span class="b-book-description">{{book.description.default}}</span>
     </div>
     <div class="b-book-footer">
-        <span>{{book.options.authors}}</span>
-        <b>, {{book.options.ISBN}}</b>
-        <span>, {{book.options.Publisher}}</span>
+        <span ng-if="book.options.authors">Authors: {{book.options.authors}}</span><br>
+        <span ng-if="book.options.Publisher">Publisher: {{book.options.Publisher}}</span><br>
+        <span ng-if="book.options.ISBN">ISBN: {{book.options.ISBN}}</b><span><br>
         <div ng-repeat="bundle in bundles">
             <a ng-href="{{Storage.getFileUrl(bundle.resourceId)}}">Link{{$index+1}}</a>
         </div>
