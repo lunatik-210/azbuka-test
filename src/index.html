@@ -2,7 +2,7 @@
 <html ng-app="azbuka">
   <head>
     <meta charset="utf-8">
-    <base href="/">
+    <base href="/catalog">
     <title>azbuka</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
@@ -27,6 +27,7 @@
     <![endif]-->
     <div layout="row" layout-align="center start">
       <md-content flex-sm="100" flex-gt-sm="100" flex-md="90" flex-gt-md="80" flex-lg="80" flex-gt-lg="60">
+        <ng-include src = "'/app/components/navbar.html'"></ng-include>
         <div ui-view></div>
       </md-content>
     </div>
